@@ -3,7 +3,7 @@ package federicoPoggi.Enteties;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
+
 @MappedSuperclass
 abstract class Articles {
     @Id
