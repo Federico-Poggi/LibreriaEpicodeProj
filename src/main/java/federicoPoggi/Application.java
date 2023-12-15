@@ -1,8 +1,8 @@
 package federicoPoggi;
 
-import federicoPoggi.Enteties.LibraryCard;
-import federicoPoggi.Enteties.Users;
-import federicoPoggi.entetiesDAO.LibraryCardDAO;
+import federicoPoggi.Enteties.Books;
+import federicoPoggi.entetiesDAO.BookDAO;
+import federicoPoggi.entetiesDAO.NewspapersDAO;
 import federicoPoggi.entetiesDAO.UsersDao;
 
 import javax.persistence.EntityManager;
@@ -15,7 +15,8 @@ public class Application {
     public static void main(String[] args) {
         EntityManager entityManager= maneger.createEntityManager();
         UsersDao us=new UsersDao(entityManager);
-
+        BookDAO ar=new BookDAO(entityManager);
+        NewspapersDAO ne=new NewspapersDAO(entityManager)
 /*-------------AGGIUNTA USER-------------------------*/
         {
                 /*Users users = new Users("Laura", "blu", "23-09-1998");
@@ -24,6 +25,7 @@ public class Application {
         }
         /*----------------------------*/
         {
+            Books bo=new Books()
 
 
         }
