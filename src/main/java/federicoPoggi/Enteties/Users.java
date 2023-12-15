@@ -5,6 +5,8 @@ import federicoPoggi.Enteties.LibraryCard;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -29,6 +31,8 @@ public class Users {
     @JoinColumn(name = "card_id")
     private LibraryCard libraryCard;
 
+    @OneToMany(mappedBy = "users")
+    private List<Rent> rentList=new ArrayList<>();
 
 
     public Users(String user_name, String user_last_name, String birth_date) {

@@ -15,9 +15,21 @@ public class Application {
     public static void main(String[] args) {
         EntityManager entityManager= maneger.createEntityManager();
         UsersDao us=new UsersDao(entityManager);
-        LibraryCard lis=new LibraryCard();
-        Users users=new Users("Luca","sassi","22-10-2003");
-        us.save(users,lis);
+
+/*-------------AGGIUNTA USER-------------------------*/
+        {
+                /*Users users = new Users("Laura", "blu", "23-09-1998");
+                us.save(users);*/
+
+        }
+        /*----------------------------*/
+        {
+
+
+        }
+
+
+
         entityManager.close();
         maneger.close();
     }

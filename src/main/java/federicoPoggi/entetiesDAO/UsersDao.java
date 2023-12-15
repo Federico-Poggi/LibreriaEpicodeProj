@@ -12,10 +12,11 @@ public class UsersDao {
 
     public UsersDao(EntityManager en){this.en=en;}
 
-    public void save(Users user, LibraryCard lis){
+    public void save(Users user){
         EntityTransaction transaction=en.getTransaction();
         LibraryCardDAO li=new LibraryCardDAO(en);
         transaction.begin();
+        LibraryCard lis=new LibraryCard();
         lis.setUsers(user);
         li.save(lis);
         user.setLibraryCard(lis);
