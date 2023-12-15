@@ -2,6 +2,8 @@ package federicoPoggi.Enteties;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "rents")
@@ -28,10 +30,14 @@ public class Rent {
     private Users users;
 
 
+    private List<Books> books = new ArrayList<>();
     public Rent() {}
 
     public Rent(Users u){
         this.users=u;
+    }
+    public Rent(List<Books> bo){
+        this.books=bo;
     }
     public Rent(long id, String isbnArticle, LocalDate loanDate, LocalDate returnDate, LocalDate actualdate) {
         this.id = id;

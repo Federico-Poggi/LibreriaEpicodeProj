@@ -2,13 +2,16 @@ package federicoPoggi.Enteties;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @MappedSuperclass
 abstract class Articles {
     @Id
     @Column(name = "isbn_id", nullable = false, updatable = false)
-    private char  isbnCode;
+    private String  isbnCode;
 
     @Column(name = "article_title", nullable = false,length = 50)
     protected String title;
@@ -20,10 +23,17 @@ abstract class Articles {
     protected int pages_numbers;
 
 
-    public Articles(char isbnCode, String title, LocalDate pubDate, int pages_numbers) {
+
+
+
+
+
+
+
+    public Articles(String isbnCode, String title, String pubDate, int pages_numbers) {
         this.isbnCode = isbnCode;
         this.title = title;
-        this.pubDate = pubDate;
+        this.pubDate = setArticledate(pubDate);
         this.pages_numbers = pages_numbers;
     }
     public Articles(){};
@@ -32,7 +42,7 @@ abstract class Articles {
 
     /*---GETTERS---*/
 
-    public char getIsbnCode() {
+    public String getIsbnCode() {
         return isbnCode;
     }
 
@@ -46,6 +56,11 @@ abstract class Articles {
 
     public int getPages_numbers() {
         return pages_numbers;
+    }
+
+    public LocalDate setArticledate(String eve) {
+        LocalDate loc= LocalDate.parse(eve, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return this.pubDate = loc;
     }
 
 }

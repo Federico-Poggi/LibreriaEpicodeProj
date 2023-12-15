@@ -13,7 +13,7 @@ public class Newspapers extends Articles{
     @Column(name = "periodicity")
     Frequenza periodicity;
 
-    public Newspapers(char isbnCode, String title, LocalDate pubDate, int pages_numbers, Frequenza periodicity) {
+    public Newspapers(String  isbnCode, String title, String pubDate, int pages_numbers, Frequenza periodicity) {
         super(isbnCode, title, pubDate, pages_numbers);
         this.periodicity=periodicity;
     }

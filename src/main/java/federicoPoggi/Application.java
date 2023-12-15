@@ -1,6 +1,8 @@
 package federicoPoggi;
 
+import com.github.javafaker.Faker;
 import federicoPoggi.Enteties.Books;
+import federicoPoggi.Enteties.GenreType;
 import federicoPoggi.entetiesDAO.BookDAO;
 import federicoPoggi.entetiesDAO.NewspapersDAO;
 import federicoPoggi.entetiesDAO.UsersDao;
@@ -8,6 +10,9 @@ import federicoPoggi.entetiesDAO.UsersDao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.Locale;
+import java.util.Random;
+import java.util.function.Supplier;
 
 public class Application {
 
@@ -22,10 +27,10 @@ public class Application {
                 /*Users users = new Users("Laura", "blu", "23-09-1998");
                 us.save(users);*/
 
-        }
+        };
+
         /*----------------------------*/
         {
-            Books bo=new Books()
 
 
         }

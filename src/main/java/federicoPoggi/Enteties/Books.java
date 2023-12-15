@@ -1,7 +1,11 @@
 package federicoPoggi.Enteties;
 
+import com.github.javafaker.DateAndTime;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "books")
@@ -13,12 +17,17 @@ public class Books extends Articles{
     @Column(name = "genres")
     private String genreType;
 
-    public Books(char isbnCode, String title, LocalDate pubDate, int pages_numbers,String authorName,GenreType genType){
+
+
+    public Books(String isbnCode, String title, String pubDate, int pages_numbers,String authorName,GenreType genType){
         super(isbnCode,title,pubDate,pages_numbers);
         this.authorName=authorName;
         this.genreType=genType.getDescrizione();
     }
     public Books(){};
+
+
+
 
 
 
