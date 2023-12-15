@@ -16,7 +16,9 @@ public class UsersDao {
         EntityTransaction transaction=en.getTransaction();
         LibraryCardDAO li=new LibraryCardDAO(en);
         transaction.begin();
-        li.save(lis,user);
+        lis.setUsers(user);
+        li.save(lis);
+        user.setLibraryCard(lis);
         en.persist(user);
         transaction.commit();
     }

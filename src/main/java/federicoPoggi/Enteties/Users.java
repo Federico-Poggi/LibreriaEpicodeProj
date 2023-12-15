@@ -31,14 +31,16 @@ public class Users {
 
 
 
-    public Users(String user_name, String user_last_name, String birth_date,LibraryCard li) {
+    public Users(String user_name, String user_last_name, String birth_date) {
         this.user_id=getUser_id();
         this.userName = user_name;
         this.userLastName = user_last_name;
         this.birth_date = setBirth_date(birth_date);
-        this.libraryCard=li;
     }
 
+    public Users(LibraryCard li){
+        this.libraryCard=li;
+    }
     public Users() {}
 
 
@@ -69,5 +71,9 @@ public class Users {
     public LocalDate setBirth_date(String eve) {
         LocalDate loc= LocalDate.parse(eve, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         return this.birth_date = loc;
+    }
+
+    public void setLibraryCard(LibraryCard libraryCard) {
+        this.libraryCard = libraryCard;
     }
 }

@@ -16,10 +16,8 @@ public class Application {
         EntityManager entityManager= maneger.createEntityManager();
         UsersDao us=new UsersDao(entityManager);
         LibraryCard lis=new LibraryCard();
-        Users users=new Users("Luca","sassi","22-10-2003",lis);
+        Users users=new Users("Luca","sassi","22-10-2003");
         us.save(users,lis);
-        /*li.save(lis);*/
-
         entityManager.close();
         maneger.close();
     }

@@ -10,14 +10,9 @@ public class LibraryCardDAO {
     public EntityManager en;
     public LibraryCardDAO(EntityManager en){this.en=en;};
 
-    public void save(LibraryCard li,Users u){
+    public void save(LibraryCard li){
         /*EntityTransaction transaction=en.getTransaction();*/
-
-
         en.persist(li);
-        en.persist(u);
-
-
     }
 
 }
