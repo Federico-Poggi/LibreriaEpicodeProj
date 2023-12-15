@@ -33,8 +33,9 @@ public class Books extends Articles{
     }
 
     /*----SETTER----*/
-    
+
     public void setGenreType(String genreType) {
         this.genreType = genreType;
     }
+
 }
