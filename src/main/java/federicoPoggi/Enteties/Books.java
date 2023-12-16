@@ -1,33 +1,30 @@
 package federicoPoggi.Enteties;
-
-import com.github.javafaker.DateAndTime;
-
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "books")
 public class Books extends Articles{
 
+    @Column(name = "isbn",nullable = false,unique = true)
+    private long isbnCode;
     @Column(name = "author", nullable = false, length = 30)
     private String authorName;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "genres")
-    private String genreType;
+    private GenreType genreType;
 
 
 
-    public Books(String isbnCode, String title, String pubDate, int pages_numbers,String authorName,GenreType genType){
-        super(isbnCode,title,pubDate,pages_numbers);
+    public Books(long isbnCode,String title, String pubDate, int pages_numbers,String authorName,GenreType genType){
+        this.isbnCode=isbnCode;
+        this.title=title;
         this.authorName=authorName;
-        this.genreType=genType.getDescrizione();
+        this.pubDate=setArticledate(pubDate);
+        this.pages_numbers=pages_numbers;
+        this.genreType=genType;
     }
     public Books(){};
-
-
-
 
 
 
@@ -37,13 +34,13 @@ public class Books extends Articles{
         return authorName;
     }
 
-    public String getGenreType() {
+    public GenreType getGenreType() {
         return genreType;
     }
 
     /*----SETTER----*/
 
-    public void setGenreType(String genreType) {
+    public void setGenreType() {
         this.genreType = genreType;
     }
 

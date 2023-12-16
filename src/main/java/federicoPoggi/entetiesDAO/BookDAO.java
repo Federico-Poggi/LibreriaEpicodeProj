@@ -14,7 +14,6 @@ public class BookDAO {
 
     public void add(Books bo){
         EntityTransaction transaction= em.getTransaction();
-        transaction.begin();
 
         em.persist(bo);
 

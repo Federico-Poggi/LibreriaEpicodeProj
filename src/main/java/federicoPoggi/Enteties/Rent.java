@@ -29,15 +29,10 @@ public class Rent {
     @JoinColumn(name = "user_id")
     private Users users;
 
-
-    private List<Books> books = new ArrayList<>();
     public Rent() {}
 
     public Rent(Users u){
         this.users=u;
-    }
-    public Rent(List<Books> bo){
-        this.books=bo;
     }
     public Rent(long id, String isbnArticle, LocalDate loanDate, LocalDate returnDate, LocalDate actualdate) {
         this.id = id;

@@ -1,5 +1,8 @@
 package federicoPoggi.Enteties;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -10,8 +13,11 @@ import java.util.List;
 @MappedSuperclass
 abstract class Articles {
     @Id
-    @Column(name = "isbn_id", nullable = false, updatable = false)
-    private String  isbnCode;
+    @Generated(
+            GenerationTime.ALWAYS
+    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
 
     @Column(name = "article_title", nullable = false,length = 50)
     protected String title;
@@ -23,27 +29,11 @@ abstract class Articles {
     protected int pages_numbers;
 
 
-
-
-
-
-
-
-
-    public Articles(String isbnCode, String title, String pubDate, int pages_numbers) {
-        this.isbnCode = isbnCode;
-        this.title = title;
-        this.pubDate = setArticledate(pubDate);
-        this.pages_numbers = pages_numbers;
-    }
-    public Articles(){};
-
-
-
     /*---GETTERS---*/
 
-    public String getIsbnCode() {
-        return isbnCode;
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -59,7 +49,7 @@ abstract class Articles {
     }
 
     public LocalDate setArticledate(String eve) {
-        LocalDate loc= LocalDate.parse(eve, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        LocalDate loc= LocalDate.parse(eve, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         return this.pubDate = loc;
     }
 

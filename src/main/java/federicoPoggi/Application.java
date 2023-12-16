@@ -1,9 +1,10 @@
 package federicoPoggi;
 
+import com.github.javafaker.Cat;
 import com.github.javafaker.Faker;
-import federicoPoggi.Enteties.Books;
-import federicoPoggi.Enteties.GenreType;
+import federicoPoggi.Enteties.*;
 import federicoPoggi.entetiesDAO.BookDAO;
+import federicoPoggi.entetiesDAO.CatalogoDAO;
 import federicoPoggi.entetiesDAO.NewspapersDAO;
 import federicoPoggi.entetiesDAO.UsersDao;
 
@@ -21,22 +22,22 @@ public class Application {
         EntityManager entityManager= maneger.createEntityManager();
         UsersDao us=new UsersDao(entityManager);
         BookDAO ar=new BookDAO(entityManager);
-        NewspapersDAO ne=new NewspapersDAO(entityManager)
-/*-------------AGGIUNTA USER-------------------------*/
-        {
-                /*Users users = new Users("Laura", "blu", "23-09-1998");
-                us.save(users);*/
-
-        };
-
-        /*----------------------------*/
-        {
-
-
-        }
+        CatalogoDAO cat=new CatalogoDAO(entityManager);
+        NewspapersDAO nd=new NewspapersDAO(entityManager);
+        /*-------AGGIUNTA USER------------*/
 
 
 
+
+        /*-------AGGIUNTA PRODOTTI-------*/
+
+        /*Newspapers ne=new Newspapers(22450934,"JapanTrip", "2023-08-21" ,53,Frequenza.MENSILE);
+        nd.save(ne);
+        Catalogo catalogo=new Catalogo(ne);
+        cat.addNew(catalogo);*/
+        /*Books books=new Books(44256212,"Guerra e pace","1869-08-07",553,"Lev Tolsto",GenreType.FANTASY);
+        cat.addBo(books);*/
+        cat.deleteNew("JapanTrip");
         entityManager.close();
         maneger.close();
     }

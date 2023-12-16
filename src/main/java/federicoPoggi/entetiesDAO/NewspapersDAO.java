@@ -13,7 +13,7 @@ public class NewspapersDAO {
         this.em=e;
     }
 
-    public void add(Newspapers ne){
+    public void save(Newspapers ne){
         EntityTransaction transaction= em.getTransaction();
         transaction.begin();
 
