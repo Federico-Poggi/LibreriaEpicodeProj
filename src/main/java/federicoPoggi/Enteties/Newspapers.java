@@ -1,33 +1,25 @@
 package federicoPoggi.Enteties;
 
-import org.hibernate.annotations.GeneratorType;
-import org.hibernate.engine.jdbc.spi.SchemaNameResolver;
-import org.hibernate.loader.custom.FetchReturn;
-
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(name = "newspapers")
-public class Newspapers extends Articles{
-    @Column(name = "isbn_code", unique = true)
-    private long  isbnCode;
+@Inheritance (strategy = InheritanceType.TABLE_PER_CLASS)
+@Table (name = "newspapers")
+public class Newspapers extends Articles {
+    @Column (name = "isbn_code", unique = true)
+    private long isbnCode;
 
-    @Enumerated(value =EnumType.STRING)
-    @Column(name = "periodicity")
+    @Enumerated (value = EnumType.STRING)
+    @Column (name = "periodicity")
     Frequenza periodicity;
 
-    public Newspapers(long isbnCode,String title, String pubDate, int pages_numbers, Frequenza periodicity) {
-        this.isbnCode=isbnCode;
-        this.title=title;
-        this.pubDate=setArticledate(pubDate);
-        this.pages_numbers=pages_numbers;
+    public Newspapers(long isbnCode, String title, int pages_numbers, Frequenza periodicity) {
+        this.isbnCode = isbnCode;
+        this.title = title;
+        this.pubDate = generateRandomDate();
+        this.pages_numbers = pages_numbers;
         this.periodicity = periodicity;
     }
-
 
 
     public Newspapers() {
@@ -36,15 +28,18 @@ public class Newspapers extends Articles{
 
 
 
-    public LocalDate setYear(String eve) {
-        LocalDate loc= LocalDate.parse(eve, DateTimeFormatter.ofPattern("yyyy"));
-        return this.pubDate = loc;
-    }
-
-
     /*----GETTERS---*/
 
     public Frequenza getPeriodicity() {
         return periodicity;
+    }
+
+    public long getIsbnCode() {
+        return isbnCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Newspapers{" + "id=" + id + " + isbnCode=" + getIsbnCode() + " periodicity=" + getPeriodicity() + " title: " + getTitle() + ", pubDate: " + getPubDate() + ", pages_numbers=" + getPages_numbers() + '}';
     }
 }

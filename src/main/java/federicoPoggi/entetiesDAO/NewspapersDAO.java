@@ -5,6 +5,8 @@ import federicoPoggi.Enteties.Newspapers;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import java.util.List;
 
 public class NewspapersDAO {
     public EntityManager em;
@@ -22,6 +24,14 @@ public class NewspapersDAO {
         transaction.commit();
     }
 
+    public List<Newspapers> findByIsbn(long isbn) {
+        Query query = em.createQuery("SELECT code FROM Newspapers code WHERE code.isbnCode = :isbn");
+        query.setParameter("isbn", isbn);
+        @SuppressWarnings ("unchecked") List<Newspapers> newspapers = query.getResultList();
+
+        return newspapers;
+
+    }
 
 }
 
